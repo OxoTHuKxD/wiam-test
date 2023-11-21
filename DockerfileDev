@@ -1,0 +1,8 @@
+FROM wiam-test-base-php:latest
+
+USER root
+
+# Add xdebug
+RUN apk add --update linux-headers \
+    && pecl install xdebug-3.2.2 \
+    && docker-php-ext-enable xdebug
