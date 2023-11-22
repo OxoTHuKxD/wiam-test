@@ -7,5 +7,5 @@ cp -u environment-config/dev/php/php-ini-overrides.ini environment-config/dev/ph
 docker build -t wiam-test-base-php .
 docker-compose build
 docker-compose run wiam-app composer install --prefer-dist --optimize-autoloader
-docker-compose run wiam-app php yii migrate --interactive=0
 docker-compose up -d
+docker-compose run wiam-app php yii migrate --interactive=0
