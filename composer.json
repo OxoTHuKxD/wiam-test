@@ -58,6 +58,11 @@
             ]
         }
     },
+    "autoload": {
+        "psr-4": {
+            "app\\": ""
+        }
+    },
     "repositories": [
         {
             "type": "composer",

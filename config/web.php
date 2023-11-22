@@ -2,6 +2,7 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$di = require __DIR__ . '/di.php';
 
 $config = [
     'id' => 'basic',
@@ -10,6 +11,11 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+    ],
+    'container' => $di,
+    'controllerMap' => [
+        'image' => \app\domain\image\presentation\ImageController::class,
+        'image-admin' => \app\domain\image\presentation\ImageAdminController::class,
     ],
     'components' => [
         'request' => [
@@ -45,6 +51,10 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '/' => 'image/index',
+                '/images/<imageId:\d+>/save-result/<result>' => 'image/save-result',
+                '/admin' => 'image-admin/index',
+                '/admin/images/delete/<imageId:\d+>' => 'image-admin/delete',
             ],
         ],
     ],
